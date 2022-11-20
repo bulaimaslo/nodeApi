@@ -31,9 +31,27 @@ export class ProductWarehouseService {
     },
   };
 
+  findAll(): Product[] {
+    return Object.values(this.productWarehouse);
+  }
 
+  findOne(id: number): Product {
+    return this.productWarehouse[id];
+  }
 
+  update(id: number, product: Product): Product {
+    this.productWarehouse[id] = product;
+    return product;
+  }
+
+  create(product: Product): Product {
+    this.productWarehouse[product.id] = product;
+    return product;
+  }
+
+  delete(id: number): Product {
+    const product = this.productWarehouse[id];
+    delete this.productWarehouse[id];
+    return product;
+  }
 }
-
-
-
