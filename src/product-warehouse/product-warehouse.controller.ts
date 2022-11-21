@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { ProductWarehouseService } from './product-warehouse.service';
 import { Product } from '../product/product';
 import { ProductWarehouse } from './product-warehouse';
@@ -19,7 +19,7 @@ export class ProductWarehouseController {
     return this.productWarehouseService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   async update(id: number, product: Product): Promise<Product> {
     return this.productWarehouseService.update(id, product);
   }

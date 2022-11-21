@@ -1,6 +1,26 @@
+import {
+  IsString,
+  IsNumber,
+  IsOptional,
+  MaxLength,
+  IsNotEmpty,
+  IsDate,
+} from 'class-validator';
+
 export class Product {
-    readonly id: number;
-    name: string;
-    price: number;
-    updatedDate: Date;
+  @IsNumber()
+  @IsOptional()
+  id: number;
+
+  @IsString()
+  @MaxLength(100)
+  @IsNotEmpty()
+  name: string;
+
+  @IsNumber()
+  price: number;
+
+  @IsOptional()
+  @IsDate()
+  updatedDate: Date;
 }
