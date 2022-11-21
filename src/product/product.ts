@@ -8,10 +8,6 @@ import {
 } from 'class-validator';
 
 export class Product {
-  @IsNumber()
-  @IsOptional()
-  id: number;
-
   @IsString()
   @MaxLength(100)
   @IsNotEmpty()
