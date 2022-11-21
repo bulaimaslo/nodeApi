@@ -43,6 +43,7 @@ export class ProductWarehouseService {
 
   create(product: Product): Product {
     const id = Object.keys(this.productWarehouse).length + 1;
+    product.updatedDate = new Date();
     this.productWarehouse[id] = product;
     return product;
   }
