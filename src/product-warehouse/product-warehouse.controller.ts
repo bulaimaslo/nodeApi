@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ProductWarehouseService } from './product-warehouse.service';
 import { Product } from '../product/product';
 import { ProductWarehouse } from './product-warehouse';
@@ -15,22 +15,22 @@ export class ProductWarehouseController {
   }
 
   @Get(':id')
-  async findOne(id: number): Promise<Product> {
+  async findOne(@Param('id') id: number): Promise<Product> {
     return this.productWarehouseService.findOne(id);
   }
 
   @Put(':id')
-  async update(id: number, product: Product): Promise<Product> {
+  async update(@Param('id') id: number, @Body() product: Product): Promise<Product> {
     return this.productWarehouseService.update(id, product);
   }
 
-  @Post(':id')
-  async create(product: Product): Promise<Product> {
+  @Post()
+  async create(@Body() product: Product): Promise<Product> {
     return this.productWarehouseService.create(product);
   }
 
   @Delete(':id')
-  async delete(id: number): Promise<Product> {
+  async delete(@Param('id') id: number): Promise<Product> {
     return this.productWarehouseService.delete(id);
   }
 }
